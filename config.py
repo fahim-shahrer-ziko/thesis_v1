@@ -26,7 +26,17 @@ GEN_DIR          = os.path.join(PROMPT_STORE_DIR, "gen")
 SEED_TASK_DIR    = os.path.join(PROMPT_STORE_DIR, "seed_task")
 INSTRUCTION_DIR  = os.path.join(PROMPT_STORE_DIR, "instruction")
 
-DATASET_DIR    = os.path.join(PROJECT_ROOT, "dataset")
+import os
+
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+# Check whether we are running on Kaggle
+if os.path.exists("/kaggle/input"):
+    # Change this to your Kaggle dataset name
+    DATASET_DIR = "/kaggle/input/datasets/fahimshahrerziko/dataset-v2"
+else:
+    DATASET_DIR = os.path.join(PROJECT_ROOT, "dataset")
+
 DATA4FT_DIR    = os.path.join(PROJECT_ROOT, "data4FT")
 MODEL_SAVE_DIR = os.path.join(PROJECT_ROOT, "modelSave")
 OUTPUT_DIR     = os.path.join(PROJECT_ROOT, "output")
@@ -34,6 +44,15 @@ LOG_DIR        = os.path.join(PROJECT_ROOT, "logs")
 
 TRIP_CSV_PATH    = os.path.join(DATASET_DIR, "trip_data.csv")
 PERSONA_CSV_PATH = os.path.join(DATASET_DIR, "persona_data.csv")
+
+# DATASET_DIR    = os.path.join(PROJECT_ROOT, "dataset")
+# DATA4FT_DIR    = os.path.join(PROJECT_ROOT, "data4FT")
+# MODEL_SAVE_DIR = os.path.join(PROJECT_ROOT, "modelSave")
+# OUTPUT_DIR     = os.path.join(PROJECT_ROOT, "output")
+# LOG_DIR        = os.path.join(PROJECT_ROOT, "logs")
+
+# TRIP_CSV_PATH    = os.path.join(DATASET_DIR, "trip_data.csv")
+# PERSONA_CSV_PATH = os.path.join(DATASET_DIR, "persona_data.csv")
 
 SPLIT_MANIFEST_PATH = os.path.join(DATA4FT_DIR, "passenger_split.json")
 
