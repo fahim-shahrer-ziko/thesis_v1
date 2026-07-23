@@ -124,7 +124,7 @@ TASK_META = {
 # Only needed for gated models (e.g. Llama).
 # Set to None for open models (Qwen, Mistral).
 # ---------------------------------------------------------------------------
-HF_TOKEN = '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'  # e.g. "hf_xxxxxxxxxxxx"
+HF_TOKEN = os.getenv("HF_TOKEN")  # e.g. "hf_xxxxxxxxxxxx"
 
 # ---------------------------------------------------------------------------
 # Instruction generation model
