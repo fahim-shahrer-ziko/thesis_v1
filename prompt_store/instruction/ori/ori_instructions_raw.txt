@@ -1,0 +1,341 @@
+<instruction>
+<task definition>
+    Predict the most likely exit station for a commuter's next trip based on their historical patterns and current context.
+    ________________________________________
+    <persona>
+    <persona> describes the commuter's long-term mobility characteristics
+    as a 7-element tuple:
+    (Total_Trips, Active_Days, Unique_Origin, Unique_Dests, Avg_TT,
+    Peak_Trips, Weekend_Trips)
+    - Total_Trips: total trips completed during the observation period.
+    - Active_Days: number of distinct days with at least one trip.
+    - Unique_Origin: number of unique starting stations used.
+    - Unique_Dests: number of unique destination stations visited.
+    - Avg_TT: average travel time across all trips.
+    - Peak_Trips: number of trips made during peak commuting periods.
+    - Weekend_Trips: number of trips made on weekends.
+    ________________________________________
+    <data description>
+    <history> contains the commuter's older trips; <context> contains
+    their most recent trips immediately before the prediction target.
+    Both are in chronological order. Each trip is a 7-element tuple:
+    (Gender, Age_On_June_2024, Entry_DT, Exit_DT, DayName,
+    Entry_Station_Name, Exit_Station_Name)
+    The prediction target <target_stay> has the same format with the exit station hidden:
+    (Gender, Age_On_June_2024, Entry_DT, None, DayName,
+    <entry_station_name>, None)
+    Only <entry_station_name> must be predicted.
+    ________________________________________
+    <thinking guidance>
+    Reason step by step before answering:
+    1. Analyze <history> to identify recurring patterns involving the same <entry_station_name>.
+    2. Examine <context> to determine the most recent trends.
+    3. Consider the commuter's age and the day of the week for the target trip.
+    4. Use <persona> to understand the commuter's typical travel behavior.
+    5. Synthesize the information to make a final prediction.
+    Output only the final prediction in the required JSON format.
+</instruction>
+
+<instruction>
+<task definition>
+    Forecast the entry station for a tourist's upcoming trip based on their historical visit patterns and current context.
+    ________________________________________
+    <persona>
+    <persona> describes the tourist's long-term mobility characteristics
+    as a 7-element tuple:
+    (Total_Trips, Active_Days, Unique_Origin, Unique_Dests, Avg_TT,
+    Peak_Trips, Weekend_Trips)
+    - Total_Trips: total trips completed during the observation period.
+    - Active_Days: number of distinct days with at least one trip.
+    - Unique_Origin: number of unique starting stations used.
+    - Unique_Dests: number of unique destination stations visited.
+    - Avg_TT: average travel time across all trips.
+    - Peak_Trips: number of trips made during peak visiting periods.
+    - Weekend_Trips: number of trips made on weekends.
+    ________________________________________
+    <data description>
+    <history> contains the tourist's older visits; <context> contains
+    their most recent visits immediately before the prediction target.
+    Both are in chronological order. Each visit is a 7-element tuple:
+    (Gender, Age_On_June_2024, Entry_DT, Exit_DT, DayName,
+    Entry_Station_Name, Exit_Station_Name)
+    The prediction target <target_stay> has the same format with the exit station hidden:
+    (Gender, Age_On_June_2024, Entry_DT, None, DayName,
+    <entry_station_name>, None)
+    Only <entry_station_name> must be predicted.
+    ________________________________________
+    <thinking guidance>
+    Reason step by step before answering:
+    1. Identify common entry and exit points from <history>.
+    2. Analyze <context> for recent patterns.
+    3. Consider the tourist's age and the day of the week for the target trip.
+    4. Use <persona> to infer typical visiting behaviors.
+    5. Combine insights to predict the most likely entry station.
+    Output only the final prediction in the required JSON format.
+</instruction>
+
+<instruction>
+<task definition>
+    Predict the exit station for a daily commuter based on their historical commuting patterns and current context.
+    ________________________________________
+    <persona>
+    <persona> describes the commuter's long-term mobility characteristics
+    as a 7-element tuple:
+    (Total_Trips, Active_Days, Unique_Origin, Unique_Dests, Avg_TT,
+    Peak_Trips, Weekend_Trips)
+    - Total_Trips: total trips completed during the observation period.
+    - Active_Days: number of distinct days with at least one trip.
+    - Unique_Origin: number of unique starting stations used.
+    - Unique_Dests: number of unique destination stations visited.
+    - Avg_TT: average travel time across all trips.
+    - Peak_Trips: number of trips made during peak commuting periods.
+    - Weekend_Trips: number of trips made on weekends.
+    ________________________________________
+    <data description>
+    <history> contains the commuter's older trips; <context> contains
+    their most recent trips immediately before the prediction target.
+    Both are in chronological order. Each trip is a 7-element tuple:
+    (Gender, Age_On_June_2024, Entry_DT, Exit_DT, DayName,
+    Entry_Station_Name, Exit_Station_Name)
+    The prediction target <target_stay> has the same format with the exit station hidden:
+    (Gender, Age_On_June_2024, Entry_DT, None, DayName,
+    <entry_station_name>, None)
+    Only <entry_station_name> must be predicted.
+    ________________________________________
+    <thinking guidance>
+    Reason step by step before answering:
+    1. Examine <history> for recurring entry and exit station pairs.
+    2. Analyze <context> for recent trends.
+    3. Consider the commuter's age and the day of the week for the target trip.
+    4. Use <persona> to understand typical commuting habits.
+    5. Synthesize the information to make a final prediction.
+    Output only the final prediction in the required JSON format.
+</instruction>
+
+<instruction>
+<task definition>
+    Determine the most probable entry station for a frequent traveler based on their historical trip patterns and current context.
+    ________________________________________
+    <persona>
+    <persona> describes the traveler's long-term mobility characteristics
+    as a 7-element tuple:
+    (Total_Trips, Active_Days, Unique_Origin, Unique_Dests, Avg_TT,
+    Peak_Trips, Weekend_Trips)
+    - Total_Trips: total trips completed during the observation period.
+    - Active_Days: number of distinct days with at least one trip.
+    - Unique_Origin: number of unique starting stations used.
+    - Unique_Dests: number of unique destination stations visited.
+    - Avg_TT: average travel time across all trips.
+    - Peak_Trips: number of trips made during peak travel periods.
+    - Weekend_Trips: number of trips made on weekends.
+    ________________________________________
+    <data description>
+    <history> contains the traveler's older trips; <context> contains
+    their most recent trips immediately before the prediction target.
+    Both are in chronological order. Each trip is a 7-element tuple:
+    (Gender, Age_On_June_2024, Entry_DT, Exit_DT, DayName,
+    Entry_Station_Name, Exit_Station_Name)
+    The prediction target <target_stay> has the same format with the exit station hidden:
+    (Gender, Age_On_June_2024, Entry_DT, None, DayName,
+    <entry_station_name>, None)
+    Only <entry_station_name> must be predicted.
+    ________________________________________
+    <thinking guidance>
+    Reason step by step before answering:
+    1. Scan <history> for common entry and exit points.
+    2. Examine <context> for recent patterns.
+    3. Consider the traveler's age and the day of the week for the target trip.
+    4. Use <persona> to understand typical travel behavior.
+    5. Synthesize the information to make a final prediction.
+    Output only the final prediction in the required JSON format.
+</instruction>
+
+<instruction>
+<task definition>
+    Forecast the exit station for a weekend commuter based on their historical weekend trip patterns and current context.
+    ________________________________________
+    <persona>
+    <persona> describes the commuter's long-term mobility characteristics
+    as a 7-element tuple:
+    (Total_Trips, Active_Days, Unique_Origin, Unique_Dests, Avg_TT,
+    Peak_Trips, Weekend_Trips)
+    - Total_Trips: total trips completed during the observation period.
+    - Active_Days: number of distinct days with at least one trip.
+    - Unique_Origin: number of unique starting stations used.
+    - Unique_Dests: number of unique destination stations visited.
+    - Avg_TT: average travel time across all trips.
+    - Peak_Trips: number of trips made during peak commuting periods.
+    - Weekend_Trips: number of trips made on weekends.
+    ________________________________________
+    <data description>
+    <history> contains the commuter's older weekend trips; <context> contains
+    their most recent weekend trips immediately before the prediction target.
+    Both are in chronological order. Each trip is a 7-element tuple:
+    (Gender, Age_On_June_2024, Entry_DT, Exit_DT, DayName,
+    Entry_Station_Name, Exit_Station_Name)
+    The prediction target <target_stay> has the same format with the exit station hidden:
+    (Gender, Age_On_June_2024, Entry_DT, None, DayName,
+    <entry_station_name>, None)
+    Only <entry_station_name> must be predicted.
+    ________________________________________
+    <thinking guidance>
+    Reason step by step before answering:
+    1. Identify common exit points from <history>.
+    2. Analyze <context> for recent patterns.
+    3. Consider the commuter's age and the day of the week for the target trip.
+    4. Use <persona> to understand typical weekend travel behavior.
+    5. Synthesize the information to make a final prediction.
+    Output only the final prediction in the required JSON format.
+</instruction>
+
+<instruction>
+<task definition>
+    Predict the entry station for a student based on their historical school trip patterns and current context.
+    ________________________________________
+    <persona>
+    <persona> describes the student's long-term mobility characteristics
+    as a 7-element tuple:
+    (Total_Trips, Active_Days, Unique_Origin, Unique_Dests, Avg_TT,
+    Peak_Trips, Weekend_Trips)
+    - Total_Trips: total trips completed during the observation period.
+    - Active_Days: number of distinct days with at least one trip.
+    - Unique_Origin: number of unique starting stations used.
+    - Unique_Dests: number of unique destination stations visited.
+    - Avg_TT: average travel time across all trips.
+    - Peak_Trips: number of trips made during peak school periods.
+    - Weekend_Trips: number of trips made on weekends.
+    ________________________________________
+    <data description>
+    <history> contains the student's older school trips; <context> contains
+    their most recent school trips immediately before the prediction target.
+    Both are in chronological order. Each trip is a 7-element tuple:
+    (Gender, Age_On_June_2024, Entry_DT, Exit_DT, DayName,
+    Entry_Station_Name, Exit_Station_Name)
+    The prediction target <target_stay> has the same format with the exit station hidden:
+    (Gender, Age_On_June_2024, Entry_DT, None, DayName,
+    <entry_station_name>, None)
+    Only <entry_station_name> must be predicted.
+    ________________________________________
+    <thinking guidance>
+    Reason step by step before answering:
+    1. Analyze <history> for frequent entry and exit points.
+    2. Examine <context> for recent patterns.
+    3. Consider the student's age and the day of the week for the target trip.
+    4. Use <persona> to understand typical school travel behavior.
+    5. Synthesize the information to make a final prediction.
+    Output only the final prediction in the required JSON format.
+</instruction>
+
+<instruction>
+<task definition>
+    Forecast the exit station for a business traveler based on their historical business trip patterns and current context.
+    ________________________________________
+    <persona>
+    <persona> describes the traveler's long-term mobility characteristics
+    as a 7-element tuple:
+    (Total_Trips, Active_Days, Unique_Origin, Unique_Dests, Avg_TT,
+    Peak_Trips, Weekend_Trips)
+    - Total_Trips: total trips completed during the observation period.
+    - Active_Days: number of distinct days with at least one trip.
+    - Unique_Origin: number of unique starting stations used.
+    - Unique_Dests: number of unique destination stations visited.
+    - Avg_TT: average travel time across all trips.
+    - Peak_Trips: number of trips made during peak business travel periods.
+    - Weekend_Trips: number of trips made on weekends.
+    ________________________________________
+    <data description>
+    <history> contains the traveler's older business trips; <context> contains
+    their most recent business trips immediately before the prediction target.
+    Both are in chronological order. Each trip is a 7-element tuple:
+    (Gender, Age_On_June_2024, Entry_DT, Exit_DT, DayName,
+    Entry_Station_Name, Exit_Station_Name)
+    The prediction target <target_stay> has the same format with the exit station hidden:
+    (Gender, Age_On_June_2024, Entry_DT, None, DayName,
+    <entry_station_name>, None)
+    Only <entry_station_name> must be predicted.
+    ________________________________________
+    <thinking guidance>
+    Reason step by step before answering:
+    1. Identify common exit points from <history>.
+    2. Analyze <context> for recent patterns.
+    3. Consider the traveler's age and the day of the week for the target trip.
+    4. Use <persona> to understand typical business travel behavior.
+    5. Synthesize the information to make a final prediction.
+    Output only the final prediction in the required JSON format.
+</instruction>
+
+<instruction>
+<task definition>
+    Predict the entry station for a frequent business traveler based on their historical trip patterns and current context.
+    ________________________________________
+    <persona>
+    <persona> describes the traveler's long-term mobility characteristics
+    as a 7-element tuple:
+    (Total_Trips, Active_Days, Unique_Origin, Unique_Dests, Avg_TT,
+    Peak_Trips, Weekend_Trips)
+    - Total_Trips: total trips completed during the observation period.
+    - Active_Days: number of distinct days with at least one trip.
+    - Unique_Origin: number of unique starting stations used.
+    - Unique_Dests: number of unique destination stations visited.
+    - Avg_TT: average travel time across all trips.
+    - Peak_Trips: number of trips made during peak business travel periods.
+    - Weekend_Trips: number of trips made on weekends.
+    ________________________________________
+    <data description>
+    <history> contains the traveler's older trips; <context> contains
+    their most recent trips immediately before the prediction target.
+    Both are in chronological order. Each trip is a 7-element tuple:
+    (Gender, Age_On_June_2024, Entry_DT, Exit_DT, DayName,
+    Entry_Station_Name, Exit_Station_Name)
+    The prediction target <target_stay> has the same format with the exit station hidden:
+    (Gender, Age_On_June_2024, Entry_DT, None, DayName,
+    <entry_station_name>, None)
+    Only <entry_station_name> must be predicted.
+    ________________________________________
+    <thinking guidance>
+    Reason step by step before answering:
+    1. Examine <history> for recurring entry and exit points.
+    2. Analyze <context> for recent patterns.
+    3. Consider the traveler's age and the day of the week for the target trip.
+    4. Use <persona> to understand typical business travel behavior.
+    5. Synthesize the information to make a final prediction.
+    Output only the final prediction in the required JSON format.
+</instruction>
+
+<instruction>
+<task definition>
+    Forecast the exit station for a part-time worker based on their historical work trip patterns and current context.
+    ________________________________________
+    <persona>
+    <persona> describes the worker's long-term mobility characteristics
+    as a 7-element tuple:
+    (Total_Trips, Active_Days, Unique_Origin, Unique_Dests, Avg_TT,
+    Peak_Trips, Weekend_Trips)
+    - Total_Trips: total trips completed during the observation period.
+    - Active_Days: number of distinct days with at least one trip.
+    - Unique_Origin: number of unique starting stations used.
+    - Unique_Dests: number of unique destination stations visited.
+    - Avg_TT: average travel time across all trips.
+    - Peak_Trips: number of trips made during peak work travel periods.
+    - Weekend_Trips: number of trips made on weekends.
+    ________________________________________
+    <data description>
+    <history> contains the worker's older work trips; <context> contains
+    their most recent work trips immediately before the prediction target.
+    Both are in chronological order. Each trip is a 7-element tuple:
+    (Gender, Age_On_June_2024, Entry_DT, Exit_DT, DayName,
+    Entry_Station_Name, Exit_Station_Name)
+    The prediction target <target_stay> has the same format with the exit station hidden:
+    (Gender, Age_On_June_2024, Entry_DT, None, DayName,
+    <entry_station_name>, None)
+    Only <entry_station_name> must be predicted.
+    ________________________________________
+    <thinking guidance>
+    Reason step by step before answering:
+    1. Identify common exit points from <history>.
+    2. Analyze <context> for recent patterns.
+    3. Consider the worker's age and the day of the week for the target trip.
+    4. Use <persona> to understand typical work travel behavior.
+    5. Synthesize the information to make a final prediction.
+    Output only the final prediction in the required JSON format.
+</instruction>

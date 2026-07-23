@@ -1,0 +1,33 @@
+Task title: Instruction 3
+
+<task definition>
+    The challenge is to predict the next subway station a passenger will exit from after entering the subway. Utilize the passenger's extensive subway usage history, recent travel records, and personal mobility tendencies to forecast the likely exit point for the upcoming journey.
+    ________________________________________
+    <persona>
+    <persona> reflects the passenger's subway travel habits as a 7-element tuple:
+    (Total_Subways, Peak_Hours, Common_Start, Common_End, Avg_Duration, Weekday_Trips, Weekend_Trips)
+    - Total_Subways: total number of subway rides observed.
+    - Peak_Hours: hours when the passenger frequently uses subways.
+    - Common_Start: common entry points for subway rides.
+    - Common_End: common exit points for subway rides.
+    - Avg_Duration: average duration of each subway ride.
+    - Weekday_Trips: number of subway rides on weekdays.
+    - Weekend_Trips: number of subway rides on weekends.
+    ________________________________________
+    <data description>
+    <history> provides past subway ride records; <context> outlines the most recent rides leading up to the prediction target. Both are in chronological order. Each ride is described as a 7-element tuple:
+    (Gender, Age_On_June_2024, Boarding_DT, Alighting_DT, DayName,
+    Boarding_Station, Alighting_Station)
+    The prediction target <target_ride> is in the same format but with the alighting station hidden:
+    (Gender, Age_On_June_2024, Boarding_DT, Alighting_DT, DayName,
+    Boarding_Station, <next_station>)
+    The task is to predict the <next_station>.
+    ________________________________________
+    <thinking guidance>
+    Follow these steps:
+    1. Examine <history> for recurring board-alight patterns matching the current <boarding_station> and time of day.
+    2. Analyze <context> for recent trends.
+    3. Use demographic information like age and gender to narrow down potential exits.
+    4. Incorporate <persona> insights to account for any deviations in typical alighting points.
+    5. Synthesize the most likely alighting station.
+    Output the prediction in JSON format.

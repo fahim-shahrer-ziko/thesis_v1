@@ -1,0 +1,26 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/venv/bin/python",
+  "python.terminal.activateEnvironment": true,
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Args": ["--max-line-length=120", "--ignore=E402,W503,E501"],
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true
+  },
+  "black-formatter.args": ["--line-length", "120"],
+  "editor.rulers": [120],
+  "editor.tabSize": 4,
+  "editor.insertSpaces": true,
+  "files.associations": { ".env": "dotenv", "*.jsonl": "json" },
+  "files.exclude": {
+    "**/__pycache__": true, "**/*.pyc": true, "**/venv": true, "**/*.egg-info": true
+  },
+  "search.exclude": {
+    "**/venv": true, "**/data/processed": true, "**/outputs": true,
+    "**/models": true, "**/instruction_dataset": true, "**/logs": true
+  },
+  "terminal.integrated.env.linux":   { "PYTHONPATH": "${workspaceFolder}/src" },
+  "terminal.integrated.env.osx":     { "PYTHONPATH": "${workspaceFolder}/src" },
+  "terminal.integrated.env.windows": { "PYTHONPATH": "${workspaceFolder}/src" }
+}

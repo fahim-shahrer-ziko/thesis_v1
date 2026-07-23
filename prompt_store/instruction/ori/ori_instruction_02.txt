@@ -1,0 +1,37 @@
+Task title: Instruction 2
+
+<task definition>
+    Forecast the entry station for a tourist's upcoming trip based on their historical visit patterns and current context.
+    ________________________________________
+    <persona>
+    <persona> describes the tourist's long-term mobility characteristics
+    as a 7-element tuple:
+    (Total_Trips, Active_Days, Unique_Origin, Unique_Dests, Avg_TT,
+    Peak_Trips, Weekend_Trips)
+    - Total_Trips: total trips completed during the observation period.
+    - Active_Days: number of distinct days with at least one trip.
+    - Unique_Origin: number of unique starting stations used.
+    - Unique_Dests: number of unique destination stations visited.
+    - Avg_TT: average travel time across all trips.
+    - Peak_Trips: number of trips made during peak visiting periods.
+    - Weekend_Trips: number of trips made on weekends.
+    ________________________________________
+    <data description>
+    <history> contains the tourist's older visits; <context> contains
+    their most recent visits immediately before the prediction target.
+    Both are in chronological order. Each visit is a 7-element tuple:
+    (Gender, Age_On_June_2024, Entry_DT, Exit_DT, DayName,
+    Entry_Station_Name, Exit_Station_Name)
+    The prediction target <target_stay> has the same format with the exit station hidden:
+    (Gender, Age_On_June_2024, Entry_DT, None, DayName,
+    <entry_station_name>, None)
+    Only <entry_station_name> must be predicted.
+    ________________________________________
+    <thinking guidance>
+    Reason step by step before answering:
+    1. Identify common entry and exit points from <history>.
+    2. Analyze <context> for recent patterns.
+    3. Consider the tourist's age and the day of the week for the target trip.
+    4. Use <persona> to infer typical visiting behaviors.
+    5. Combine insights to predict the most likely entry station.
+    Output only the final prediction in the required JSON format.

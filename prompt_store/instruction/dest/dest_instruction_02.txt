@@ -1,0 +1,33 @@
+Task title: Instruction 2
+
+<task definition>
+    Your objective is to anticipate the next bus stop a commuter will alight at after entering the bus. Leverage the commuter's historical bus usage patterns, recent travel history, and personal mobility preferences to pinpoint the likely exit point for the next journey.
+    ________________________________________
+    <persona>
+    <persona> encapsulates the commuter's mobility habits as a 7-element tuple:
+    (Total_Buses, Peak_Hours, Common_Start, Common_End, Avg_Duration, Weekday_Trips, Weekend_Trips)
+    - Total_Buses: total number of bus rides observed.
+    - Peak_Hours: hours when the commuter frequently uses buses.
+    - Common_Start: common starting points for bus rides.
+    - Common_End: common destinations for bus rides.
+    - Avg_Duration: average duration of each bus ride.
+    - Weekday_Trips: number of bus rides on weekdays.
+    - Weekend_Trips: number of bus rides on weekends.
+    ________________________________________
+    <data description>
+    <history> lists past bus ride data; <context> details the most recent rides leading up to the prediction target. Both are in chronological order. Each ride is represented as a 7-element tuple:
+    (Gender, Age_On_June_2024, Boarding_DT, Alighting_DT, DayName,
+    Boarding_Stop, Alighting_Stop)
+    The prediction target <target_ride> is in the same format but with the alighting stop hidden:
+    (Gender, Age_On_June_2024, Boarding_DT, Alighting_DT, DayName,
+    Boarding_Stop, <next_stop>)
+    The task is to predict the <next_stop>.
+    ________________________________________
+    <thinking guidance>
+    Think through the steps methodically:
+    1. Review <history> for recurring board-alight patterns consistent with the current <boarding_stop> and time of day.
+    2. Analyze <context> for recent trends.
+    3. Apply demographic data such as age and gender to filter potential stops.
+    4. Consider <persona> for any variations in typical alighting points.
+    5. Combine insights to determine the most probable alighting stop.
+    Output the prediction in JSON format.

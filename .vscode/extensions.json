@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.black-formatter",
+    "ms-python.flake8",
+    "ms-python.debugpy",
+    "ms-toolsai.jupyter",
+    "redhat.vscode-yaml",
+    "mikestead.dotenv",
+    "mechatroner.rainbow-csv",
+    "grapecity.gc-excelviewer",
+    "eamodio.gitlens"
+  ]
+}

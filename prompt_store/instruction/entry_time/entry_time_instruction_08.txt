@@ -1,0 +1,32 @@
+Task title: Instruction 8
+
+<task definition>
+    Forecast the next bike ride time of a cyclist based on their historical biking patterns, recent biking context, and personal biking habits.
+    ________________________________________
+    <persona>
+    <persona> captures the cyclist's biking habits as a 7-element tuple:
+    (Total_Bikes, Active_Days, Unique_Riding_Paths, Favorite_Paths, Avg_Bike_Time,
+    Peak_Biking_Hours, Weekend_Bikes)
+    - Total_Bikes: total number of bike rides recorded.
+    - Active_Days: number of distinct days with at least one bike ride.
+    - Unique_Riding_Paths: number of distinct biking paths used.
+    - Favorite_Paths: top 3 most frequently biked paths.
+    - Avg_Bike_Time: average duration of each bike ride.
+    - Peak_Biking_Hours: hours with the highest biking frequency.
+    - Weekend_Bikes: number of rides taken on weekends.
+    ________________________________________
+    <data description>
+    <history> lists past biking records; <context> shows recent rides leading up to the prediction target. Both are in chronological order. Each ride is a 7-element tuple:
+    (Gender, Age_On_June_2024, Start_DT, End_DT, DayName, Starting_Point, Ending_Point)
+    The prediction target <target_bike> has the same format but with the ending point hidden:
+    (Gender, Age_On_June_2024, <start_time>, None, DayName, Starting_Point, None)
+    Only <start_time> must be predicted.
+    ________________________________________
+    <thinking guidance>
+    Use the following method to predict the next bike ride start time:
+    1. Examine <history> for repeated starting and ending points matching the <target_bike>.
+    2. Analyze <context> for the most recent biking trends.
+    3. Consider the user's demographic information.
+    4. Factor in the average bike ride time and peak biking hours.
+    5. Combine all data to form a reasoned prediction.
+    Provide the result in the required JSON format.

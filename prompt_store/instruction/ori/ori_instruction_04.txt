@@ -1,0 +1,37 @@
+Task title: Instruction 4
+
+<task definition>
+    Determine the most probable entry station for a frequent traveler based on their historical trip patterns and current context.
+    ________________________________________
+    <persona>
+    <persona> describes the traveler's long-term mobility characteristics
+    as a 7-element tuple:
+    (Total_Trips, Active_Days, Unique_Origin, Unique_Dests, Avg_TT,
+    Peak_Trips, Weekend_Trips)
+    - Total_Trips: total trips completed during the observation period.
+    - Active_Days: number of distinct days with at least one trip.
+    - Unique_Origin: number of unique starting stations used.
+    - Unique_Dests: number of unique destination stations visited.
+    - Avg_TT: average travel time across all trips.
+    - Peak_Trips: number of trips made during peak travel periods.
+    - Weekend_Trips: number of trips made on weekends.
+    ________________________________________
+    <data description>
+    <history> contains the traveler's older trips; <context> contains
+    their most recent trips immediately before the prediction target.
+    Both are in chronological order. Each trip is a 7-element tuple:
+    (Gender, Age_On_June_2024, Entry_DT, Exit_DT, DayName,
+    Entry_Station_Name, Exit_Station_Name)
+    The prediction target <target_stay> has the same format with the exit station hidden:
+    (Gender, Age_On_June_2024, Entry_DT, None, DayName,
+    <entry_station_name>, None)
+    Only <entry_station_name> must be predicted.
+    ________________________________________
+    <thinking guidance>
+    Reason step by step before answering:
+    1. Scan <history> for common entry and exit points.
+    2. Examine <context> for recent patterns.
+    3. Consider the traveler's age and the day of the week for the target trip.
+    4. Use <persona> to understand typical travel behavior.
+    5. Synthesize the information to make a final prediction.
+    Output only the final prediction in the required JSON format.

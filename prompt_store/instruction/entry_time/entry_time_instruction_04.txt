@@ -1,0 +1,32 @@
+Task title: Instruction 4
+
+<task definition>
+    Forecast the departure time of a cyclist's next ride using their historical cycling data, current ride context, and personal cycling habits.
+    ________________________________________
+    <persona>
+    <persona> describes the cyclist's riding habits as a 7-element tuple:
+    (Total_Cycles, Active_Days, Unique_Riding_Paths, Favorite_Paths, Avg_Ride_Distance,
+    Peak_Ride_Hours, Weekend_Rides)
+    - Total_Cycles: total number of rides observed.
+    - Active_Days: number of days with at least one ride.
+    - Unique_Riding_Paths: number of distinct cycling paths used.
+    - Favorite_Paths: top 3 most frequently cycled paths.
+    - Avg_Ride_Distance: average distance cycled per ride.
+    - Peak_Ride_Hours: hours with the highest ride frequency.
+    - Weekend_Rides: number of rides taken on weekends.
+    ________________________________________
+    <data description>
+    <history> lists past cycling rides; <context> shows recent rides leading up to the prediction target. Both are in chronological order. Each ride is a 7-element tuple:
+    (Gender, Age_On_June_2024, Start_DT, End_DT, DayName, Starting_Point, Ending_Point)
+    The prediction target <target_cycle> has the same format but with the ending point hidden:
+    (Gender, Age_On_June_2024, <start_time>, None, DayName, Starting_Point, None)
+    Only <start_time> must be predicted.
+    ________________________________________
+    <thinking guidance>
+    Use the following approach to predict the next ride's start time:
+    1. Review <history> for repeated starting and ending points matching the <target_cycle>.
+    2. Analyze <context> for the most recent ride trends.
+    3. Consider the user's demographic information.
+    4. Factor in the average ride distance and peak ride hours.
+    5. Integrate all insights to generate the best prediction.
+    Provide the result in the required JSON format.

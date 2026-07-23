@@ -1,0 +1,33 @@
+Task title: Instruction 6
+
+<task definition>
+    Your task is to predict the next ferry landing point a passenger will reach after embarking the ferry. Utilize the passenger's extensive ferry travel history, recent travel records, and personal mobility habits to forecast the likely landing point for the upcoming journey.
+    ________________________________________
+    <persona>
+    <persona> summarizes the passenger's ferry travel habits as a 7-element tuple:
+    (Total_Ferries, Peak_Hours, Common_Start, Common_End, Avg_Duration, Weekday_Rides, Weekend_Rides)
+    - Total_Ferries: total number of ferry rides observed.
+    - Peak_Hours: hours when the passenger frequently uses ferries.
+    - Common_Start: common starting points for ferry rides.
+    - Common_End: common landing points for ferry rides.
+    - Avg_Duration: average duration of each ferry ride.
+    - Weekday_Rides: number of ferry rides on weekdays.
+    - Weekend_Rides: number of ferry rides on weekends.
+    ________________________________________
+    <data description>
+    <history> lists past ferry ride data; <context> details the most recent rides leading up to the prediction target. Both are in chronological order. Each ride is represented as a 7-element tuple:
+    (Gender, Age_On_June_2024, Embark_DT, Landing_DT, DayName,
+    Embark_Point, Landing_Point)
+    The prediction target <target_ride> is in the same format but with the landing point hidden:
+    (Gender, Age_On_June_2024, Embark_DT, Landing_DT, DayName,
+    Embark_Point, <next_point>)
+    The task is to predict the <next_point>.
+    ________________________________________
+    <thinking guidance>
+    Reason through the following steps:
+    1. Review <history> for recurring embark-landing patterns matching the current <embark_point> and time of day.
+    2. Analyze <context> for recent trends.
+    3. Apply demographic data like age and gender to filter potential landing points.
+    4. Incorporate <persona> insights to account for any deviations in typical landing points.
+    5. Synthesize the most likely landing point.
+    Output the prediction in JSON format.

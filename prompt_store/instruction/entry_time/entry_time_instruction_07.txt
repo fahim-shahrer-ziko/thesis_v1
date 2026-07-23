@@ -1,0 +1,32 @@
+Task title: Instruction 7
+
+<task definition>
+    Predict the next walking route of a hiker based on their past hiking activities, recent hiking context, and personal hiking habits.
+    ________________________________________
+    <persona>
+    <persona> describes the hiker's hiking habits as a 7-element tuple:
+    (Total_Hikes, Active_Days, Unique_Hiking_Paths, Favorite_Paths, Avg_Hike_Duration,
+    Peak_Hiking_Hours, Weekend_Hikes)
+    - Total_Hikes: total number of hikes recorded.
+    - Active_Days: number of distinct days with at least one hike.
+    - Unique_Hiking_Paths: number of distinct hiking paths used.
+    - Favorite_Paths: top 3 most frequently hiked paths.
+    - Avg_Hike_Duration: average duration of each hike.
+    - Peak_Hiking_Hours: hours with the highest hiking frequency.
+    - Weekend_Hikes: number of hikes taken on weekends.
+    ________________________________________
+    <data description>
+    <history> includes past hiking records; <context> shows recent hikes leading up to the prediction target. Both are in chronological order. Each hike is a 7-element tuple:
+    (Gender, Age_On_June_2024, Start_DT, End_DT, DayName, Starting_Point, Ending_Point)
+    The prediction target <target_hike> has the same format but with the ending point hidden:
+    (Gender, Age_On_June_2024, <start_time>, None, DayName, Starting_Point, None)
+    Only <start_time> must be predicted.
+    ________________________________________
+    <thinking guidance>
+    Follow these steps to predict the next hiking start time:
+    1. Review <history> for repeated starting and ending points matching the <target_hike>.
+    2. Analyze <context> for the most recent hiking trends.
+    3. Consider the user's demographic information.
+    4. Factor in the average hike duration and peak hiking hours.
+    5. Combine all data to form a reasoned prediction.
+    Provide the result in the required JSON format.

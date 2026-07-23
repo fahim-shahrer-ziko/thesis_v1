@@ -1,0 +1,32 @@
+Task title: Instruction 3
+
+<task definition>
+    Predict the arrival time of a pedestrian's next walk based on their history of walking, current walking activity, and personal walking preferences.
+    ________________________________________
+    <persona>
+    <persona> defines the pedestrian's walking behavior as a 7-element tuple:
+    (Total_Walks, Active_Days, Unique_Walking_Paths, Common_Destinations, Avg_Walk_Duration,
+    Peak_Walking_Hours, Weekend_Walks)
+    - Total_Walks: total number of walks observed.
+    - Active_Days: number of days with at least one walk.
+    - Unique_Walking_Paths: number of distinct walking paths used.
+    - Common_Destinations: most frequent destinations walked to.
+    - Avg_Walk_Duration: average length of each walk.
+    - Peak_Walking_Hours: hours with the highest walking frequency.
+    - Weekend_Walks: number of walks taken on weekends.
+    ________________________________________
+    <data description>
+    <history> includes past walking records; <context> shows recent walks preceding the prediction target. Both are in chronological order. Each walk is a 7-element tuple:
+    (Gender, Age_On_June_2024, Start_DT, End_DT, DayName, Starting_Location, Ending_Location)
+    The prediction target <target_walk> has the same format but with the ending location hidden:
+    (Gender, Age_On_June_2024, <start_time>, None, DayName, Starting_Location, None)
+    Only <start_time> needs to be predicted.
+    ________________________________________
+    <thinking guidance>
+    Follow these steps to predict the next walk start time:
+    1. Scan <history> for repeating starting and ending locations matching the <target_walk>.
+    2. Analyze <context> for the latest walking trends.
+    3. Consider the user's demographic information.
+    4. Factor in the average walk duration and peak walking times.
+    5. Integrate all data points to make a reasoned prediction.
+    Output the result in the required JSON format.

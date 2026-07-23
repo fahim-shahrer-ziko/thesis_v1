@@ -1,0 +1,33 @@
+Task title: Instruction 7
+
+<task definition>
+    The objective is to predict the next bike-sharing station a user will dock their bike at after leaving the current station. Utilize the user's extensive bike usage history, recent bike ride records, and personal mobility habits to forecast the likely docking point for the upcoming journey.
+    ________________________________________
+    <persona>
+    <persona> captures the user's bike usage habits as a 7-element tuple:
+    (Total_Bikes, Peak_Hours, Common_Start, Common_End, Avg_Duration, Weekday_Rides, Weekend_Rides)
+    - Total_Bikes: total number of bike rides observed.
+    - Peak_Hours: hours when the user frequently uses bikes.
+    - Common_Start: common starting points for bike rides.
+    - Common_End: common docking points for bike rides.
+    - Avg_Duration: average duration of each bike ride.
+    - Weekday_Rides: number of bike rides on weekdays.
+    - Weekend_Rides: number of bike rides on weekends.
+    ________________________________________
+    <data description>
+    <history> lists past bike ride data; <context> details the most recent rides leading up to the prediction target. Both are in chronological order. Each ride is represented as a 7-element tuple:
+    (Gender, Age_On_June_2024, Departure_DT, Arrival_DT, DayName,
+    Departure_Station, Arrival_Station)
+    The prediction target <target_ride> is in the same format but with the arrival station hidden:
+    (Gender, Age_On_June_2024, Departure_DT, Arrival_DT, DayName,
+    Departure_Station, <next_station>)
+    The task is to predict the <next_station>.
+    ________________________________________
+    <thinking guidance>
+    Think through the steps:
+    1. Examine <history> for recurring departure-arrival patterns matching the current <departure_station> and time of day.
+    2. Analyze <context> for recent trends.
+    3. Apply demographic data like age and gender to filter potential arrival points.
+    4. Incorporate <persona> insights to account for any deviations in typical arrival points.
+    5. Synthesize the most likely arrival station.
+    Output the prediction in JSON format.

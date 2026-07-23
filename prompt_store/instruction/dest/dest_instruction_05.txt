@@ -1,0 +1,33 @@
+Task title: Instruction 5
+
+<task definition>
+    The goal is to predict the next tram stop a commuter will exit from after entering the tram. Utilize the commuter's extensive tram usage history, recent travel records, and personal mobility habits to forecast the likely exit point for the upcoming journey.
+    ________________________________________
+    <persona>
+    <persona> encapsulates the commuter's tram travel habits as a 7-element tuple:
+    (Total_Trams, Peak_Hours, Common_Start, Common_End, Avg_Duration, Weekday_Trips, Weekend_Trips)
+    - Total_Trams: total number of tram rides observed.
+    - Peak_Hours: hours when the commuter frequently uses trams.
+    - Common_Start: common starting points for tram rides.
+    - Common_End: common ending points for tram rides.
+    - Avg_Duration: average duration of each tram ride.
+    - Weekday_Trips: number of tram rides on weekdays.
+    - Weekend_Trips: number of tram rides on weekends.
+    ________________________________________
+    <data description>
+    <history> provides past tram ride records; <context> outlines the most recent rides leading up to the prediction target. Both are in chronological order. Each ride is described as a 7-element tuple:
+    (Gender, Age_On_June_2024, Boarding_DT, Alighting_DT, DayName,
+    Boarding_Stop, Alighting_Stop)
+    The prediction target <target_ride> is in the same format but with the alighting stop hidden:
+    (Gender, Age_On_June_2024, Boarding_DT, Alighting_DT, DayName,
+    Boarding_Stop, <next_stop>)
+    The task is to predict the <next_stop>.
+    ________________________________________
+    <thinking guidance>
+    Think through the process:
+    1. Examine <history> for recurring board-alight patterns matching the current <boarding_stop> and time of day.
+    2. Analyze <context> for recent trends.
+    3. Apply demographic information like age and gender to filter potential stops.
+    4. Incorporate <persona> insights to account for any deviations in typical alighting points.
+    5. Synthesize the most likely alighting stop.
+    Output the prediction in JSON format.

@@ -1,0 +1,33 @@
+Task title: Instruction 8
+
+<task definition>
+    Your task is to predict the next bus stop a pedestrian will reach after starting from a specific location. Utilize the pedestrian's extensive walking history, recent walking records, and personal mobility habits to forecast the likely destination for the upcoming walk.
+    ________________________________________
+    <persona>
+    <persona> encapsulates the pedestrian's walking habits as a 7-element tuple:
+    (Total_Walks, Peak_Hours, Common_Start, Common_End, Avg_Duration, Weekday_Walks, Weekend_Walks)
+    - Total_Walks: total number of walks observed.
+    - Peak_Hours: hours when the pedestrian frequently walks.
+    - Common_Start: common starting points for walks.
+    - Common_End: common ending points for walks.
+    - Avg_Duration: average duration of each walk.
+    - Weekday_Walks: number of walks on weekdays.
+    - Weekend_Walks: number of walks on weekends.
+    ________________________________________
+    <data description>
+    <history> lists past walking data; <context> details the most recent walks leading up to the prediction target. Both are in chronological order. Each walk is represented as a 7-element tuple:
+    (Gender, Age_On_June_2024, Start_DT, End_DT, DayName,
+    Start_Location, End_Location)
+    The prediction target <target_walk> is in the same format but with the end location hidden:
+    (Gender, Age_On_June_2024, Start_DT, End_DT, DayName,
+    Start_Location, <next_location>)
+    The task is to predict the <next_location>.
+    ________________________________________
+    <thinking guidance>
+    Reason through the following steps:
+    1. Review <history> for recurring start-end patterns matching the current <start_location> and time of day.
+    2. Analyze <context> for recent trends.
+    3. Apply demographic data like age and gender to filter potential end points.
+    4. Incorporate <persona> insights to account for any deviations in typical end points.
+    5. Synthesize the most likely end location.
+    Output the prediction in JSON format.

@@ -1,0 +1,271 @@
+<instruction>
+<task definition>
+    You are tasked with forecasting the exit location for a person's upcoming taxi ride. Utilize the individual's historical taxi ride patterns, recent ride behavior, and personal mobility habits to determine the most likely destination for the next trip.
+    ________________________________________
+    <persona>
+    <persona> captures the individual's mobility profile as a 7-element tuple:
+    (Total_Rides, Frequent_Hours, Common_Starts, Common_Ends, Avg_Distance, Weekday_Rides, Weekend_Rides)
+    - Total_Rides: total number of rides over the observation period.
+    - Frequent_Hours: hours of the day when the individual frequently uses taxis.
+    - Common_Starts: popular starting locations for rides.
+    - Common_Ends: popular ending locations for rides.
+    - Avg_Distance: average distance traveled per ride.
+    - Weekday_Rides: number of rides taken on weekdays.
+    - Weekend_Rides: number of rides taken on weekends.
+    ________________________________________
+    <data description>
+    <history> includes past taxi ride records; <context> comprises the most recent rides prior to the prediction target. Both sequences are in chronological order. Each ride is described as a 7-element tuple:
+    (Gender, Age_On_June_2024, Pickup_DT, Dropoff_DT, DayName,
+    Pickup_Location, Dropoff_Location)
+    The prediction target <target_ride> is in the same format but with the dropoff location unknown:
+    (Gender, Age_On_June_2024, Pickup_DT, Dropoff_DT, DayName,
+    Pickup_Location, <next_location>)
+    The task is to predict the <next_location>.
+    ________________________________________
+    <thinking guidance>
+    Analyze step-by-step:
+    1. Examine <history> for frequent pickup-dropoff patterns matching the current <pickup_location> and time of day.
+    2. Consider <context> for any recent trends or deviations.
+    3. Use demographic information like age and gender to filter potential destinations.
+    4. Apply <persona> insights to account for variability in ride destinations.
+    5. Synthesize the most probable destination based on the above analysis.
+    Output the prediction in JSON format.
+</instruction>
+
+<instruction>
+<task definition>
+    Your objective is to anticipate the next bus stop a commuter will alight at after entering the bus. Leverage the commuter's historical bus usage patterns, recent travel history, and personal mobility preferences to pinpoint the likely exit point for the next journey.
+    ________________________________________
+    <persona>
+    <persona> encapsulates the commuter's mobility habits as a 7-element tuple:
+    (Total_Buses, Peak_Hours, Common_Start, Common_End, Avg_Duration, Weekday_Trips, Weekend_Trips)
+    - Total_Buses: total number of bus rides observed.
+    - Peak_Hours: hours when the commuter frequently uses buses.
+    - Common_Start: common starting points for bus rides.
+    - Common_End: common destinations for bus rides.
+    - Avg_Duration: average duration of each bus ride.
+    - Weekday_Trips: number of bus rides on weekdays.
+    - Weekend_Trips: number of bus rides on weekends.
+    ________________________________________
+    <data description>
+    <history> lists past bus ride data; <context> details the most recent rides leading up to the prediction target. Both are in chronological order. Each ride is represented as a 7-element tuple:
+    (Gender, Age_On_June_2024, Boarding_DT, Alighting_DT, DayName,
+    Boarding_Stop, Alighting_Stop)
+    The prediction target <target_ride> is in the same format but with the alighting stop hidden:
+    (Gender, Age_On_June_2024, Boarding_DT, Alighting_DT, DayName,
+    Boarding_Stop, <next_stop>)
+    The task is to predict the <next_stop>.
+    ________________________________________
+    <thinking guidance>
+    Think through the steps methodically:
+    1. Review <history> for recurring board-alight patterns consistent with the current <boarding_stop> and time of day.
+    2. Analyze <context> for recent trends.
+    3. Apply demographic data such as age and gender to filter potential stops.
+    4. Consider <persona> for any variations in typical alighting points.
+    5. Combine insights to determine the most probable alighting stop.
+    Output the prediction in JSON format.
+</instruction>
+
+<instruction>
+<task definition>
+    The challenge is to predict the next subway station a passenger will exit from after entering the subway. Utilize the passenger's extensive subway usage history, recent travel records, and personal mobility tendencies to forecast the likely exit point for the upcoming journey.
+    ________________________________________
+    <persona>
+    <persona> reflects the passenger's subway travel habits as a 7-element tuple:
+    (Total_Subways, Peak_Hours, Common_Start, Common_End, Avg_Duration, Weekday_Trips, Weekend_Trips)
+    - Total_Subways: total number of subway rides observed.
+    - Peak_Hours: hours when the passenger frequently uses subways.
+    - Common_Start: common entry points for subway rides.
+    - Common_End: common exit points for subway rides.
+    - Avg_Duration: average duration of each subway ride.
+    - Weekday_Trips: number of subway rides on weekdays.
+    - Weekend_Trips: number of subway rides on weekends.
+    ________________________________________
+    <data description>
+    <history> provides past subway ride records; <context> outlines the most recent rides leading up to the prediction target. Both are in chronological order. Each ride is described as a 7-element tuple:
+    (Gender, Age_On_June_2024, Boarding_DT, Alighting_DT, DayName,
+    Boarding_Station, Alighting_Station)
+    The prediction target <target_ride> is in the same format but with the alighting station hidden:
+    (Gender, Age_On_June_2024, Boarding_DT, Alighting_DT, DayName,
+    Boarding_Station, <next_station>)
+    The task is to predict the <next_station>.
+    ________________________________________
+    <thinking guidance>
+    Follow these steps:
+    1. Examine <history> for recurring board-alight patterns matching the current <boarding_station> and time of day.
+    2. Analyze <context> for recent trends.
+    3. Use demographic information like age and gender to narrow down potential exits.
+    4. Incorporate <persona> insights to account for any deviations in typical alighting points.
+    5. Synthesize the most likely alighting station.
+    Output the prediction in JSON format.
+</instruction>
+
+<instruction>
+<task definition>
+    You need to predict the next train station a traveler will disembark at after entering the train. Leverage the traveler's extensive train usage history, recent travel records, and personal mobility patterns to forecast the likely exit point for the upcoming journey.
+    ________________________________________
+    <persona>
+    <persona> summarizes the traveler's train travel habits as a 7-element tuple:
+    (Total_Trains, Peak_Hours, Common_Start, Common_End, Avg_Duration, Weekday_Trips, Weekend_Trips)
+    - Total_Trains: total number of train rides observed.
+    - Peak_Hours: hours when the traveler frequently uses trains.
+    - Common_Start: common entry points for train rides.
+    - Common_End: common exit points for train rides.
+    - Avg_Duration: average duration of each train ride.
+    - Weekday_Trips: number of train rides on weekdays.
+    - Weekend_Trips: number of train rides on weekends.
+    ________________________________________
+    <data description>
+    <history> lists past train ride data; <context> details the most recent rides leading up to the prediction target. Both are in chronological order. Each ride is represented as a 7-element tuple:
+    (Gender, Age_On_June_2024, Boarding_DT, Alighting_DT, DayName,
+    Boarding_Station, Alighting_Station)
+    The prediction target <target_ride> is in the same format but with the alighting station hidden:
+    (Gender, Age_On_June_2024, Boarding_DT, Alighting_DT, DayName,
+    Boarding_Station, <next_station>)
+    The task is to predict the <next_station>.
+    ________________________________________
+    <thinking guidance>
+    Reason systematically:
+    1. Review <history> for recurring board-alight patterns matching the current <boarding_station> and time of day.
+    2. Analyze <context> for recent trends.
+    3. Apply demographic data like age and gender to filter potential exits.
+    4. Integrate <persona> insights to account for any variations in typical alighting points.
+    5. Combine all insights to determine the most probable alighting station.
+    Output the prediction in JSON format.
+</instruction>
+
+<instruction>
+<task definition>
+    The goal is to predict the next tram stop a commuter will exit from after entering the tram. Utilize the commuter's extensive tram usage history, recent travel records, and personal mobility habits to forecast the likely exit point for the upcoming journey.
+    ________________________________________
+    <persona>
+    <persona> encapsulates the commuter's tram travel habits as a 7-element tuple:
+    (Total_Trams, Peak_Hours, Common_Start, Common_End, Avg_Duration, Weekday_Trips, Weekend_Trips)
+    - Total_Trams: total number of tram rides observed.
+    - Peak_Hours: hours when the commuter frequently uses trams.
+    - Common_Start: common starting points for tram rides.
+    - Common_End: common ending points for tram rides.
+    - Avg_Duration: average duration of each tram ride.
+    - Weekday_Trips: number of tram rides on weekdays.
+    - Weekend_Trips: number of tram rides on weekends.
+    ________________________________________
+    <data description>
+    <history> provides past tram ride records; <context> outlines the most recent rides leading up to the prediction target. Both are in chronological order. Each ride is described as a 7-element tuple:
+    (Gender, Age_On_June_2024, Boarding_DT, Alighting_DT, DayName,
+    Boarding_Stop, Alighting_Stop)
+    The prediction target <target_ride> is in the same format but with the alighting stop hidden:
+    (Gender, Age_On_June_2024, Boarding_DT, Alighting_DT, DayName,
+    Boarding_Stop, <next_stop>)
+    The task is to predict the <next_stop>.
+    ________________________________________
+    <thinking guidance>
+    Think through the process:
+    1. Examine <history> for recurring board-alight patterns matching the current <boarding_stop> and time of day.
+    2. Analyze <context> for recent trends.
+    3. Apply demographic information like age and gender to filter potential stops.
+    4. Incorporate <persona> insights to account for any deviations in typical alighting points.
+    5. Synthesize the most likely alighting stop.
+    Output the prediction in JSON format.
+</instruction>
+
+<instruction>
+<task definition>
+    Your task is to predict the next ferry landing point a passenger will reach after embarking the ferry. Utilize the passenger's extensive ferry travel history, recent travel records, and personal mobility habits to forecast the likely landing point for the upcoming journey.
+    ________________________________________
+    <persona>
+    <persona> summarizes the passenger's ferry travel habits as a 7-element tuple:
+    (Total_Ferries, Peak_Hours, Common_Start, Common_End, Avg_Duration, Weekday_Rides, Weekend_Rides)
+    - Total_Ferries: total number of ferry rides observed.
+    - Peak_Hours: hours when the passenger frequently uses ferries.
+    - Common_Start: common starting points for ferry rides.
+    - Common_End: common landing points for ferry rides.
+    - Avg_Duration: average duration of each ferry ride.
+    - Weekday_Rides: number of ferry rides on weekdays.
+    - Weekend_Rides: number of ferry rides on weekends.
+    ________________________________________
+    <data description>
+    <history> lists past ferry ride data; <context> details the most recent rides leading up to the prediction target. Both are in chronological order. Each ride is represented as a 7-element tuple:
+    (Gender, Age_On_June_2024, Embark_DT, Landing_DT, DayName,
+    Embark_Point, Landing_Point)
+    The prediction target <target_ride> is in the same format but with the landing point hidden:
+    (Gender, Age_On_June_2024, Embark_DT, Landing_DT, DayName,
+    Embark_Point, <next_point>)
+    The task is to predict the <next_point>.
+    ________________________________________
+    <thinking guidance>
+    Reason through the following steps:
+    1. Review <history> for recurring embark-landing patterns matching the current <embark_point> and time of day.
+    2. Analyze <context> for recent trends.
+    3. Apply demographic data like age and gender to filter potential landing points.
+    4. Incorporate <persona> insights to account for any deviations in typical landing points.
+    5. Synthesize the most likely landing point.
+    Output the prediction in JSON format.
+</instruction>
+
+<instruction>
+<task definition>
+    The objective is to predict the next bike-sharing station a user will dock their bike at after leaving the current station. Utilize the user's extensive bike usage history, recent bike ride records, and personal mobility habits to forecast the likely docking point for the upcoming journey.
+    ________________________________________
+    <persona>
+    <persona> captures the user's bike usage habits as a 7-element tuple:
+    (Total_Bikes, Peak_Hours, Common_Start, Common_End, Avg_Duration, Weekday_Rides, Weekend_Rides)
+    - Total_Bikes: total number of bike rides observed.
+    - Peak_Hours: hours when the user frequently uses bikes.
+    - Common_Start: common starting points for bike rides.
+    - Common_End: common docking points for bike rides.
+    - Avg_Duration: average duration of each bike ride.
+    - Weekday_Rides: number of bike rides on weekdays.
+    - Weekend_Rides: number of bike rides on weekends.
+    ________________________________________
+    <data description>
+    <history> lists past bike ride data; <context> details the most recent rides leading up to the prediction target. Both are in chronological order. Each ride is represented as a 7-element tuple:
+    (Gender, Age_On_June_2024, Departure_DT, Arrival_DT, DayName,
+    Departure_Station, Arrival_Station)
+    The prediction target <target_ride> is in the same format but with the arrival station hidden:
+    (Gender, Age_On_June_2024, Departure_DT, Arrival_DT, DayName,
+    Departure_Station, <next_station>)
+    The task is to predict the <next_station>.
+    ________________________________________
+    <thinking guidance>
+    Think through the steps:
+    1. Examine <history> for recurring departure-arrival patterns matching the current <departure_station> and time of day.
+    2. Analyze <context> for recent trends.
+    3. Apply demographic data like age and gender to filter potential arrival points.
+    4. Incorporate <persona> insights to account for any deviations in typical arrival points.
+    5. Synthesize the most likely arrival station.
+    Output the prediction in JSON format.
+</instruction>
+
+<instruction>
+<task definition>
+    Your task is to predict the next bus stop a pedestrian will reach after starting from a specific location. Utilize the pedestrian's extensive walking history, recent walking records, and personal mobility habits to forecast the likely destination for the upcoming walk.
+    ________________________________________
+    <persona>
+    <persona> encapsulates the pedestrian's walking habits as a 7-element tuple:
+    (Total_Walks, Peak_Hours, Common_Start, Common_End, Avg_Duration, Weekday_Walks, Weekend_Walks)
+    - Total_Walks: total number of walks observed.
+    - Peak_Hours: hours when the pedestrian frequently walks.
+    - Common_Start: common starting points for walks.
+    - Common_End: common ending points for walks.
+    - Avg_Duration: average duration of each walk.
+    - Weekday_Walks: number of walks on weekdays.
+    - Weekend_Walks: number of walks on weekends.
+    ________________________________________
+    <data description>
+    <history> lists past walking data; <context> details the most recent walks leading up to the prediction target. Both are in chronological order. Each walk is represented as a 7-element tuple:
+    (Gender, Age_On_June_2024, Start_DT, End_DT, DayName,
+    Start_Location, End_Location)
+    The prediction target <target_walk> is in the same format but with the end location hidden:
+    (Gender, Age_On_June_2024, Start_DT, End_DT, DayName,
+    Start_Location, <next_location>)
+    The task is to predict the <next_location>.
+    ________________________________________
+    <thinking guidance>
+    Reason through the following steps:
+    1. Review <history> for recurring start-end patterns matching the current <start_location> and time of day.
+    2. Analyze <context> for recent trends.
+    3. Apply demographic data like age and gender to filter potential end points.
+    4. Incorporate <persona> insights to account for any deviations in typical end points.
+    5. Synthesize the most likely end location.
+    Output the prediction in JSON format.
+</instruction>

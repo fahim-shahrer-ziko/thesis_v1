@@ -1,0 +1,33 @@
+Task title: Instruction 1
+
+<task definition>
+    Your goal is to forecast the exact day and time of a person's next bus trip. Utilize the individual's historical bus usage patterns, immediate prior trips, and daily routines to deduce the precise time they are likely to board the bus.
+    ________________________________________
+    <persona>
+    <persona> represents the individual's habitual bus usage as a 7-element tuple:
+    (Total_Bus_Trips, Active_Days, Unique_Routes, Favorite_Routes, Avg_Ride_Time,
+    Peak_Ride_Days, Weekday_Rides)
+    - Total_Bus_Trips: total number of bus rides recorded.
+    - Active_Days: number of distinct days with at least one bus ride.
+    - Unique_Routes: number of distinct bus routes taken.
+    - Favorite_Routes: top 3 most frequently taken bus routes.
+    - Avg_Ride_Time: average duration of each bus ride.
+    - Peak_Ride_Days: days with the highest frequency of bus rides.
+    - Weekday_Rides: number of rides taken on weekdays.
+    ________________________________________
+    <data description>
+    <history> includes past bus trip records; <context> includes recent trips just before the prediction target. Both are in chronological order. Each trip is a 7-element tuple:
+    (Gender, Age_On_June_2024, Entry_DT, Exit_DT, DayName, Boarding_Stop_Name, Alighting_Stop_Name)
+    The prediction target <target_trip> has the same format but with the exit stop hidden:
+    (Gender, Age_On_June_2024, <entry_time>, None, DayName, Boarding_Stop_Name, None)
+    Only <entry_time> needs to be predicted.
+    ________________________________________
+    <thinking guidance>
+    Follow these steps to determine the most likely entry time:
+    1. Review <history> for patterns in bus route usage, especially those matching the <target_trip>'s Boarding_Stop_Name.
+    2. Analyze <context> for any trends in recent bus usage.
+    3. Consider demographic factors such as age and gender.
+    4. Factor in the average ride time and typical ride duration.
+    5. Use <persona> to weigh the importance of frequent vs. less frequent routes.
+    6. Synthesize all information to form a reasoned prediction.
+    Provide the result in the required JSON format.

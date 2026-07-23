@@ -1,0 +1,33 @@
+Task title: Instruction 1
+
+<task definition>
+    You are tasked with forecasting the exit location for a person's upcoming taxi ride. Utilize the individual's historical taxi ride patterns, recent ride behavior, and personal mobility habits to determine the most likely destination for the next trip.
+    ________________________________________
+    <persona>
+    <persona> captures the individual's mobility profile as a 7-element tuple:
+    (Total_Rides, Frequent_Hours, Common_Starts, Common_Ends, Avg_Distance, Weekday_Rides, Weekend_Rides)
+    - Total_Rides: total number of rides over the observation period.
+    - Frequent_Hours: hours of the day when the individual frequently uses taxis.
+    - Common_Starts: popular starting locations for rides.
+    - Common_Ends: popular ending locations for rides.
+    - Avg_Distance: average distance traveled per ride.
+    - Weekday_Rides: number of rides taken on weekdays.
+    - Weekend_Rides: number of rides taken on weekends.
+    ________________________________________
+    <data description>
+    <history> includes past taxi ride records; <context> comprises the most recent rides prior to the prediction target. Both sequences are in chronological order. Each ride is described as a 7-element tuple:
+    (Gender, Age_On_June_2024, Pickup_DT, Dropoff_DT, DayName,
+    Pickup_Location, Dropoff_Location)
+    The prediction target <target_ride> is in the same format but with the dropoff location unknown:
+    (Gender, Age_On_June_2024, Pickup_DT, Dropoff_DT, DayName,
+    Pickup_Location, <next_location>)
+    The task is to predict the <next_location>.
+    ________________________________________
+    <thinking guidance>
+    Analyze step-by-step:
+    1. Examine <history> for frequent pickup-dropoff patterns matching the current <pickup_location> and time of day.
+    2. Consider <context> for any recent trends or deviations.
+    3. Use demographic information like age and gender to filter potential destinations.
+    4. Apply <persona> insights to account for variability in ride destinations.
+    5. Synthesize the most probable destination based on the above analysis.
+    Output the prediction in JSON format.

@@ -1,0 +1,32 @@
+Task title: Instruction 6
+
+<task definition>
+    Estimate the departure time of a commuter's next car ride based on their past driving patterns, recent driving context, and personal driving habits.
+    ________________________________________
+    <persona>
+    <persona> summarizes the commuter's driving habits as a 7-element tuple:
+    (Total_Drives, Active_Days, Unique_Routing_Paths, Preferred_Routes, Avg_Drive_Time,
+    Peak_Drive_Hours, Weekend_Drives)
+    - Total_Drives: total number of drives recorded.
+    - Active_Days: number of distinct days with at least one drive.
+    - Unique_Routing_Paths: number of distinct driving routes used.
+    - Preferred_Routes: top 3 most frequently driven routes.
+    - Avg_Drive_Time: average duration of each drive.
+    - Peak_Drive_Hours: hours with the highest driving frequency.
+    - Weekend_Drives: number of drives taken on weekends.
+    ________________________________________
+    <data description>
+    <history> lists past driving records; <context> shows recent drives leading up to the prediction target. Both are in chronological order. Each drive is a 7-element tuple:
+    (Gender, Age_On_June_2024, Start_DT, End_DT, DayName, Starting_Point, Destination)
+    The prediction target <target_drive> has the same format but with the destination hidden:
+    (Gender, Age_On_June_2024, <start_time>, None, DayName, Starting_Point, None)
+    Only <start_time> must be predicted.
+    ________________________________________
+    <thinking guidance>
+    Use the following method to predict the next drive start time:
+    1. Scan <history> for repeated starting and destination points matching the <target_drive>.
+    2. Analyze <context> for the most recent drive trends.
+    3. Consider the user's demographic information.
+    4. Factor in the average drive time and peak driving hours.
+    5. Combine all data to form a reasoned prediction.
+    Provide the result in the required JSON format.

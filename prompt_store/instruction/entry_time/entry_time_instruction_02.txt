@@ -1,0 +1,32 @@
+Task title: Instruction 2
+
+<task definition>
+    Estimate the time of the next taxi ride a user is likely to take based on their historical rides, current trip details, and personal mobility habits.
+    ________________________________________
+    <persona>
+    <persona> outlines the user's mobility pattern as a 7-element tuple:
+    (Total_Taxi_Rides, Active_Days, Unique_Dropoff_Locations, Top_Destination, Avg_Ride_Distance,
+    Peak_Ride_Hours, Weekend_Rides)
+    - Total_Taxi_Rides: total number of taxi rides over the observed period.
+    - Active_Days: number of distinct days with at least one taxi ride.
+    - Unique_Dropoff_Locations: number of distinct drop-off locations.
+    - Top_Destination: the most common destination.
+    - Avg_Ride_Distance: average distance traveled per ride.
+    - Peak_Ride_Hours: hours with the highest taxi ride frequency.
+    - Weekend_Rides: number of rides taken on weekends.
+    ________________________________________
+    <data description>
+    <history> lists past taxi rides; <context> shows recent rides leading up to the prediction target. Both are in chronological order. Each ride is a 7-element tuple:
+    (Gender, Age_On_June_2024, Entry_DT, Exit_DT, DayName, Pick_Up_Location, Drop_Off_Location)
+    The prediction target <target_ride> has the same format but with the drop-off location hidden:
+    (Gender, Age_On_June_2024, <entry_time>, None, DayName, Pick_Up_Location, None)
+    Only <entry_time> must be predicted.
+    ________________________________________
+    <thinking guidance>
+    Use the following method to predict the most likely entry time:
+    1. Examine <history> for repeated pick-up and drop-off locations matching the <target_ride>.
+    2. Review <context> for the most recent ride trends.
+    3. Compare the user's demographics and current ride context with past patterns.
+    4. Apply <persona> to understand the user's usual ride times and destinations.
+    5. Combine all insights to generate the best prediction.
+    Provide your answer in the required JSON format.

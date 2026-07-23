@@ -1,0 +1,41 @@
+ <task definition>
+    You are predicting the entry time of a passenger's next metro trip.
+    Using the passenger's historical travel behavior, recent travel context,
+    and long-term mobility persona, infer the single most probable
+    entry time for the target trip.
+    ________________________________________
+    <persona>
+    <persona> describes the passenger's long-term mobility characteristics
+    as a 7-element tuple:
+    (Total_Trips, Active_Days, Unique_Origin, Unique_Dests, Avg_TT,
+    Peak_Trips, Weekend_Trips)
+    - Total_Trips: total trips completed during the observation period.
+    - Active_Days: number of distinct days with at least one trip.
+    - Unique_Origin: number of unique boarding stations used.
+    - Unique_Dests: number of unique destination stations visited.
+    - Avg_TT: average travel time across all trips.
+    - Peak_Trips: number of trips made during peak commuting periods.
+    - Weekend_Trips: number of trips made on weekends.
+    ________________________________________
+    <data description>
+    <history> contains the passenger's older trips; <context> contains
+    their most recent trips immediately before the prediction target.
+    Both are in chronological order. Each trip is a 7-element tuple:
+    (Gender, Age_On_June_2024, Entry_DT, Exit_DT, DayName,
+    Entry_Station_Name, Exit_Station_Name)
+    The prediction target <target_stay> has the same format with the exit
+    station hidden:
+    (Gender, Age_On_June_2024, <entry_time>, None, DayName,
+    Entry_Station_Name, None)
+    Only <entry_time> must be predicted.
+    ________________________________________
+    <thinking guidance>
+    Reason step by step before answering:
+    1. Scan <history> for repeated origin-destination pairs tied to this
+       Entry_Station_Name, DayName.
+    2. Check <context> for the most recent trend.
+    3. Match the target's demographics and temporal attributes against
+       when similar destinations occurred in the past.
+    4. Weigh <persona> -- high Unique_Dests means more varied behavior.
+    5. Combine into one most-likely entry time.
+    Output only the final prediction in the required JSON format.

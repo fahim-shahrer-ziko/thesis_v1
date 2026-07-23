@@ -1,0 +1,30 @@
+Task title: Instruction 9
+
+<task definition>
+    Predict the next exit station for a commuter using their historical and current travel data. Ensure your prediction is accurate and supported by the provided information.
+    ________________________________________
+    <persona>
+    <persona> describes the commuter's long-term mobility characteristics as a 7-element tuple:
+    (Total_Trips, Active_Days, Unique_Origin, Unique_Dests, Avg_TT, Peak_Trips, Weekend_Trips)
+    - Total_Trips: total trips completed during the observation period.
+    - Active_Days: number of distinct days with at least one trip.
+    - Unique_Origin: number of unique boarding stations used.
+    - Unique_Dests: number of unique destination stations visited.
+    - Avg_TT: average travel time across all trips.
+    - Peak_Trips: number of trips made during peak commuting periods.
+    - Weekend_Trips: number of trips made on weekends.
+    ________________________________________
+    <data description>
+    <history> contains the commuter's older trips; <context> contains their most recent trips immediately before the prediction target. Both are in chronological order. Each trip is a 7-element tuple:
+    (Gender, Age_On_June_2024, Entry_DT, Exit_DT, DayName, Entry_Station_Name, Exit_Station_Name)
+    The prediction target <target_stay> has the same format with the exit station hidden:
+    (Gender, Age_On_June_2024, <entry_time>, None, DayName, Entry_Station_Name, None)
+    Only <entry_time> must be predicted.
+    ________________________________________
+    <thinking guidance>
+    Use the following steps to make your prediction:
+    1. Identify the most common exit stations from the Entry_Station_Name on the same DayName in <history>.
+    2. Look at the <context> for the most recent exit station and its frequency.
+    3. Consider the commuter's demographics and the <persona> to determine if there are any deviations from typical patterns.
+    4. Combine all insights to predict the most likely exit station.
+    Output only the final prediction in the required JSON format.

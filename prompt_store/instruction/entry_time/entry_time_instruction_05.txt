@@ -1,0 +1,32 @@
+Task title: Instruction 5
+
+<task definition>
+    Determine the entry time of a subway rider's next train ride using their past travel patterns, current travel context, and personal mobility habits.
+    ________________________________________
+    <persona>
+    <persona> captures the subway rider's travel habits as a 7-element tuple:
+    (Total_Trains, Active_Days, Unique_Stations, Favorite_Stations, Avg_Ride_Time,
+    Peak_Travel_Hours, Weekend_Rides)
+    - Total_Trains: total number of trains taken over the observed period.
+    - Active_Days: number of distinct days with at least one train ride.
+    - Unique_Stations: number of distinct subway stations used.
+    - Favorite_Stations: top 3 most frequently boarded stations.
+    - Avg_Ride_Time: average time spent on each train ride.
+    - Peak_Travel_Hours: hours with the highest train ride frequency.
+    - Weekend_Rides: number of rides taken on weekends.
+    ________________________________________
+    <data description>
+    <history> includes past train rides; <context> shows recent rides leading up to the prediction target. Both are in chronological order. Each ride is a 7-element tuple:
+    (Gender, Age_On_June_2024, Entry_DT, Exit_DT, DayName, Boarding_Station, Exiting_Station)
+    The prediction target <target_train> has the same format but with the exiting station hidden:
+    (Gender, Age_On_June_2024, <entry_time>, None, DayName, Boarding_Station, None)
+    Only <entry_time> must be predicted.
+    ________________________________________
+    <thinking guidance>
+    Follow these steps to predict the next train entry time:
+    1. Examine <history> for repeated boarding and exiting stations matching the <target_train>.
+    2. Analyze <context> for the most recent travel trends.
+    3. Consider the user's demographic information.
+    4. Factor in the average ride time and peak travel hours.
+    5. Combine all data to form a reasoned prediction.
+    Provide the result in the required JSON format.

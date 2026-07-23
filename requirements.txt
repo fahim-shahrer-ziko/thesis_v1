@@ -1,0 +1,8 @@
+pandas
+datasets
+transformers>=4.43.0
+accelerate
+peft>=0.11.0
+bitsandbytes>=0.43.0
+torch
+openai
