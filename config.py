@@ -157,7 +157,7 @@ LORA_TARGET_MODULES = None   # None = auto-detect
 
 USE_QLORA = True   # 4-bit QLoRA; set False if bitsandbytes unavailable
 
-MAX_SEQ_LENGTH = 1024
+MAX_SEQ_LENGTH = 512
 
 # ---------------------------------------------------------------------------
 # Sequence construction
@@ -177,9 +177,9 @@ TEST_FRAC  = 0.1
 # ---------------------------------------------------------------------------
 # Training hyperparameters
 # ---------------------------------------------------------------------------
-PER_DEVICE_TRAIN_BATCH_SIZE = 2
-GRADIENT_ACCUMULATION_STEPS = 4
-NUM_TRAIN_EPOCHS            = 3
+PER_DEVICE_TRAIN_BATCH_SIZE = 1
+GRADIENT_ACCUMULATION_STEPS = 8
+NUM_TRAIN_EPOCHS            = 1
 LEARNING_RATE               = 1e-4
 LOGGING_STEPS               = 10
 SAVE_STEPS                  = 100
