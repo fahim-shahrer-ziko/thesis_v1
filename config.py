@@ -157,7 +157,7 @@ LORA_TARGET_MODULES = None   # None = auto-detect
 
 USE_QLORA = True   # 4-bit QLoRA; set False if bitsandbytes unavailable
 
-MAX_SEQ_LENGTH = 2048
+MAX_SEQ_LENGTH = 1024
 
 # ---------------------------------------------------------------------------
 # Sequence construction
