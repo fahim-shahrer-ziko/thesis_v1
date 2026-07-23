@@ -117,14 +117,14 @@ def run_training(task, args):
         )
         model = AutoModelForCausalLM.from_pretrained(
             args.base_model, quantization_config=bnb,
-            device_map=args.device_map, use_cache=False,
+            device_map=None, use_cache=False,
             trust_remote_code=True, token=hf_token,
         )
         model = prepare_model_for_kbit_training(model)
     else:
         model = AutoModelForCausalLM.from_pretrained(
             args.base_model, torch_dtype=torch.bfloat16,
-            device_map=args.device_map, use_cache=False,
+            device_map=None, use_cache=False,
             trust_remote_code=True, token=hf_token,
         )
 
