@@ -157,7 +157,7 @@ LORA_TARGET_MODULES = None   # None = auto-detect
 
 USE_QLORA = True   # 4-bit QLoRA; set False if bitsandbytes unavailable
 
-MAX_SEQ_LENGTH = 512
+MAX_SEQ_LENGTH = 1024
 
 # ---------------------------------------------------------------------------
 # Sequence construction
@@ -167,7 +167,7 @@ MIN_TRIPS_PER_PASSENGER   = 8
 MAX_HISTORY_STAY          = 40
 MAX_WINDOWS_PER_PASSENGER = 5
 
-MAX_PASSENGERS = None   # None = all passengers; set e.g. 20000 to subsample
+MAX_PASSENGERS = 1000   # None = all passengers; set e.g. 20000 to subsample
 RANDOM_SEED    = 111
 
 TRAIN_FRAC = 0.8
